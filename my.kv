@@ -1,0 +1,134 @@
+#:kivy 1.11.1
+
+<MenuScreen>:
+    orientation: 'vertical'
+    Button:
+        text: 'Teacher'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y + 25
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'teach_scr'
+
+    Button:
+        text: 'Student'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y - 25
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = "stud_scr"
+
+    Button:
+        text: 'Exit'
+        size: 200, 30
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y - 65
+        on_press: app.stop()
+
+<TeacherScreen>:
+    orientation: 'vertical'
+    Button:
+        text: 'do form'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y + 25
+
+    Button:
+        text: 'menu'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y - 25
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'menu'
+
+<StudentScreen>:
+    orientation: 'vertical'
+    Button:
+        text: 'Game'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y + 25
+        on_press:
+            root.manager.transition.direction = 'left'
+            root.manager.current = 'game'
+
+
+    Button:
+        text: 'menu'
+        size: 400, 40
+        size_hint: None, None
+        center_x: root.center_x
+        center_y: root.center_y - 25
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'menu'
+
+<GameScreen>:
+    Button:
+        text: 'exit'
+        size: 30, 30
+        size_hint: None, None
+        center_x: 30
+        center_y: 30
+        on_press:
+            root.manager.transition.direction = 'right'
+            root.manager.current = 'menu'
+
+    Button:
+        name: 1
+        text: 'pos1'
+        size: 200, 200
+        size_hint: None, None
+        center_x: root.right / 4
+        center_y: root.top * 4 / 5
+        on_press: root.game.choice(self.name)
+
+    Button:
+        name: 2
+        text: 'pos2'
+        size: 200, 200
+        size_hint: None, None
+        center_x: root.right * 3 / 4
+        center_y: root.top * 4 / 5
+        on_press: root.game.choice(self.name)
+
+    Button:
+        name: 3
+        text: 'pos3'
+        size: 200, 200
+        size_hint: None, None
+        center_x: root.right / 4
+        center_y: root.top * 2 / 5
+        on_press: root.game.choice(self.name)
+
+    Button:
+        name: 4
+        text: 'pos4'
+        size: 200, 200
+        size_hint: None, None
+        center_x: root.right * 3 / 4
+        center_y: root.top * 2 / 5
+        on_press: root.game.choice(self.name)
+
+<WinScreen>:
+    Button:
+        text: 'menu'
+        size: 30, 30
+        size_hint: None, None
+        center_x: 30
+        center_y: root.top - 30
+        on_press: root.manager.current = 'menu'
+
+    Label:
+        text: 'YOU WIN!!!'
+        text_size: 100, None
+        center: root.center
