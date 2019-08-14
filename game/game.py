@@ -7,6 +7,11 @@ from classes import *
 
 Builder.load_file('my.kv')
 
+class GameScreen(Screen):
+    game = Game()
+    def build(self):
+        return game().run()
+
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name = "menu"))
 sm.add_widget(GameScreen(name = "game"))
@@ -14,15 +19,7 @@ sm.add_widget(WinScreen(name = "win_screen"))
 
 sm.current = 'menu'
 
-def main():
-    success_counter = 0
-
-    while success_counter <= 5:
-        level = Level(success_counter)
-
-
 class MyApp(App):
-
     def build(self):
         return sm
 

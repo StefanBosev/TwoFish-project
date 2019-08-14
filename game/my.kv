@@ -38,7 +38,12 @@
         size_hint: None, None
         center_x: root.right / 4
         center_y: root.top * 4 / 5
-        on_press: root.game.choice(self.name)
+        on_press:
+            root.game.level.choice(self.name)
+            root.game.level.score_check()
+        on_release:
+            root.game.play()
+            root.game.win_check()
 
     Button:
         name: 2
@@ -47,7 +52,12 @@
         size_hint: None, None
         center_x: root.right * 3 / 4
         center_y: root.top * 4 / 5
-        on_press: root.game.choice(self.name)
+        on_press:
+            root.game.level.choice(self.name)
+            root.game.level.score_check()
+        on_release:
+            root.game.play()
+            root.game.win_check()
 
     Button:
         name: 3
@@ -56,7 +66,12 @@
         size_hint: None, None
         center_x: root.right / 4
         center_y: root.top * 2 / 5
-        on_press: root.game.choice(self.name)
+        on_press:
+            root.game.level.choice(self.name)
+            root.game.level.score_check()
+        on_release:
+            root.game.play()
+            root.game.win_check()
 
     Button:
         name: 4
@@ -65,7 +80,12 @@
         size_hint: None, None
         center_x: root.right * 3 / 4
         center_y: root.top * 2 / 5
-        on_press: root.game.choice(self.name)
+        on_press:
+            root.game.level.choice(self.name)
+            root.game.level.score_check()
+        on_release:
+            root.game.play()
+            root.game.win_check()
 
 <WinScreen>:
     Button:
