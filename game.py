@@ -11,32 +11,33 @@ from random import randint
 Builder.load_file('my.kv')
 
 class MyGame(Widget):
-    counter = 0
-    right_pos = 0
-    q_index = 0
-    questions = [['ball',
-                    'image/ball.jpeg',
-                    'image/partyhat.jpg',
-                    'image/pizza.jpg',
-                    'image/star.jpg'],
-                ['party hat',
-                    'image/partyhat.jpg',
-                    'image/ball.jpeg',
-                    'image/pizza.jpg',
-                    'image/star.jpg'],
-                ['pizza',
-                    'image/pizza.jpg',
-                    'image/star.jpg',
-                    'image/ball.jpeg',
-                    'image/partyhat.jpg'],
-                ['star',
-                    'image/star.jpg',
-                    'image/partyhat.jpg',
-                    'image/ball.jpeg',
-                    'image/pizza.jpg']
-                ]
+    def __init__(self):
+        self.counter = 0
+        self.right_pos = randint(1, 4)
+        self.questions = [['ball',
+                        'image/ball.jpeg',
+                        'image/partyhat.jpg',
+                        'image/pizza.jpg',
+                        'image/star.jpg'],
+                    ['party hat',
+                        'image/partyhat.jpg',
+                        'image/ball.jpeg',
+                        'image/pizza.jpg',
+                        'image/star.jpg'],
+                    ['pizza',
+                        'image/pizza.jpg',
+                        'image/star.jpg',
+                        'image/ball.jpeg',
+                        'image/partyhat.jpg'],
+                    ['star',
+                        'image/star.jpg',
+                        'image/partyhat.jpg',
+                        'image/ball.jpeg',
+                        'image/pizza.jpg']
+                    ]
 
-    questions_len = len(questions)
+        self.questions_len = len(self.questions)
+        self.q_index = randint(0, self.questions_len - 1)
 
     def r_count(self):
         self.counter += 1
@@ -46,14 +47,11 @@ class MyGame(Widget):
         self.counter -= 1
         print(self.counter)
 
-    def set_question(self):
-        self.q_index = randint(0, self.questions_len - 1)
-        self.right_pos = randint(1, 4)
-        print(self.right_pos)
-
     def choice(self, name):
         if name == self.right_pos:
             self.r_count()
+            print('right choice')
+            #new_level = MyApp(self.counter)
         else:
             if self.counter < 1:
                 print(self.counter)
