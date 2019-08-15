@@ -21,12 +21,6 @@
         on_press: app.stop()
 
 <GameScreen>:
-    Label:
-        text: "word"
-        center_x: root.center_x
-        center_y: root.center_y - (root.center_y - 40)
-        text_size: None, 70
-
     Button:
         text: 'exit'
         size: 30, 30
@@ -38,8 +32,8 @@
             root.manager.current = 'menu'
 
     ImageButton:
-        name: 1
-        source: root.game.icon1.source
+        name: root.game.level.icon1.index
+        source: root.game.level.icon1.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -49,11 +43,11 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
-            root.game.win_check()
+            if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: 2
-        source: root.game.icon2.source
+        name: root.game.level.icon2.index
+        source: root.game.level.icon2.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
@@ -63,11 +57,11 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
-            root.game.win_check()
+            if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: 3
-        source: root.game.icon3.source
+        name: root.game.level.icon3.index
+        source: root.game.level.icon3.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -77,11 +71,11 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
-            root.game.win_check()
+            if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: 4
-        source: root.game.icon4.source
+        name: root.game.level.icon4.index
+        source: root.game.level.icon4.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
@@ -91,15 +85,15 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
-            root.game.win_check()
+            if root.game.win_check(): root.manager.current = 'win_screen'
 
 <WinScreen>:
     Button:
         text: 'menu'
-        size: 30, 30
+        size: 40, 40
         size_hint: None, None
-        center_x: 30
-        center_y: root.top - 30
+        center_x: 40
+        center_y: root.top - 40
         on_press: root.manager.current = 'menu'
 
     Label:
