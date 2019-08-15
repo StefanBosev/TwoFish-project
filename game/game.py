@@ -5,13 +5,19 @@ from kivy.lang import Builder
 from random import randint
 from classes import *
 
+#loading kivy file
 Builder.load_file('my.kv')
 
+#class for the screen during the game
 class GameScreen(Screen):
+    #making new game
     game = Game()
+    def new_label(self, title):
+        self.ids.label1.text = title
     def build(self):
         return game().run()
 
+#sm == Screen Manger
 sm = ScreenManager()
 sm.add_widget(MenuScreen(name = "menu"))
 sm.add_widget(GameScreen(name = "game"))

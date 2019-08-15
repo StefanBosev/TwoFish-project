@@ -23,10 +23,10 @@
 <GameScreen>:
     Button:
         text: 'exit'
-        size: 30, 30
+        size: 40, 40
         size_hint: None, None
-        center_x: 30
-        center_y: 30
+        center_x: 40
+        center_y: 40
         on_press:
             root.manager.transition.direction = 'right'
             root.manager.current = 'menu'
@@ -43,6 +43,7 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
+            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
@@ -57,6 +58,7 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
+            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
@@ -71,6 +73,7 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
+            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
@@ -85,7 +88,12 @@
             root.game.level.score_check()
         on_release:
             root.game.play()
+            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
             if root.game.win_check(): root.manager.current = 'win_screen'
+
+    Label:
+        id: label1
+        text: root.game.level.label_word
 
 <WinScreen>:
     Button:
