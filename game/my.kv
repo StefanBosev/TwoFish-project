@@ -21,6 +21,12 @@
         on_press: app.stop()
 
 <GameScreen>:
+    Label:
+        text: "word"
+        center_x: root.center_x
+        center_y: root.center_y - (root.center_y - 40)
+        text_size: None, 70
+
     Button:
         text: 'exit'
         size: 30, 30
@@ -31,9 +37,9 @@
             root.manager.transition.direction = 'right'
             root.manager.current = 'menu'
 
-    Button:
+    ImageButton:
         name: 1
-        text: 'pos1'
+        source: root.game.icon1.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -45,9 +51,9 @@
             root.game.play()
             root.game.win_check()
 
-    Button:
+    ImageButton:
         name: 2
-        text: 'pos2'
+        source: root.game.icon2.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
@@ -59,9 +65,9 @@
             root.game.play()
             root.game.win_check()
 
-    Button:
+    ImageButton:
         name: 3
-        text: 'pos3'
+        source: root.game.icon3.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -73,9 +79,9 @@
             root.game.play()
             root.game.win_check()
 
-    Button:
+    ImageButton:
         name: 4
-        text: 'pos4'
+        source: root.game.icon4.source
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
