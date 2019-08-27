@@ -12,8 +12,10 @@ Builder.load_file('my.kv')
 class GameScreen(Screen):
     #making new game
     game = Game()
+    #new label setup
     def new_label(self, title):
         self.ids.label1.text = title
+
     def build(self):
         return game().run()
 

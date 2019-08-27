@@ -32,8 +32,8 @@
             root.manager.current = 'menu'
 
     ImageButton:
-        name: root.game.level.icon1.index
-        source: root.game.level.icon1.source
+        name: 0
+        source: root.game.level.icons[self.name].url
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -42,13 +42,14 @@
             root.game.level.choice(self.name)
             root.game.level.score_check()
         on_release:
+            root.game.send_answer(self.name)
             root.game.play()
-            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
+            root.new_label(root.game.level.question['results'][0]['answer']['word'])
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: root.game.level.icon2.index
-        source: root.game.level.icon2.source
+        name: 1
+        source: root.game.level.icons[self.name].url
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
@@ -57,13 +58,14 @@
             root.game.level.choice(self.name)
             root.game.level.score_check()
         on_release:
+            root.game.send_answer(self.name)
             root.game.play()
-            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
+            root.new_label(root.game.level.question['results'][0]['answer']['word'])
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: root.game.level.icon3.index
-        source: root.game.level.icon3.source
+        name: 2
+        source: root.game.level.icons[self.name].url
         size: 200, 200
         size_hint: None, None
         center_x: root.right / 4
@@ -72,13 +74,14 @@
             root.game.level.choice(self.name)
             root.game.level.score_check()
         on_release:
+            root.game.send_answer(self.name)
             root.game.play()
-            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
+            root.new_label(root.game.level.question['results'][0]['answer']['word'])
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     ImageButton:
-        name: root.game.level.icon4.index
-        source: root.game.level.icon4.source
+        name: 3
+        source: root.game.level.icons[self.name].url
         size: 200, 200
         size_hint: None, None
         center_x: root.right * 3 / 4
@@ -87,8 +90,9 @@
             root.game.level.choice(self.name)
             root.game.level.score_check()
         on_release:
+            root.game.send_answer(self.name)
             root.game.play()
-            root.new_label(root.game.level.icons[root.game.level.right_pos].word)
+            root.new_label(root.game.level.question['results'][0]['answer']['word'])
             if root.game.win_check(): root.manager.current = 'win_screen'
 
     Label:
