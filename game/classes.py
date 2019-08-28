@@ -28,17 +28,15 @@ class Level(Widget):
         #declaring the word for the label
         self.label_word = StringProperty()
         #icons list
-        self.model = {Icon('', ''), Icon('', ''), Icon('', ''), Icon('', '')}
+        self.model = {StringProperty(), StringProperty(), StringProperty(), StringProperty()}
         self.icons = list(self.model)
 
         k = 0
         for i in range(0, len(self.icons)):
             if i == self.right_pos:
-                self.icons[i].url = self.question['results'][0]['answer']['url']
-                self.icons[i].word = self.question['results'][0]['answer']['word']
+                self.icons[i] = self.question['results'][0]['answer']['url']
                 continue
-            self.icons[i].url = self.question['results'][0]['pics'][k]['url']
-            self.icons[i].word = self.question['results'][0]['pics'][k]['word']
+            self.icons[i] = self.question['results'][0]['pics'][k]['url']
             k += 1
 
         #set label
@@ -76,7 +74,7 @@ class Game(Widget):
         print("reset score")
         print("\n")
 
-    #check if the needed score is reached. If so - return true, else - false
+    #check if the ngeteeded score is reached. If so - return true, else - false
     def win_check(self):
         if self.progress > 5:
             self.score_reset()
@@ -93,7 +91,7 @@ class Game(Widget):
         else:
             post_data = {'right_answer': right_answer, 'stud_answer': self.level.question['results'][0]['pics'][given_answer], 'if_right': check}
 
-        if right_answer['word'] == self.level.icons[given_answer].word:
+        if right_answer['url'] == self.level.icons[given_answer]:
             check = True
             post_data = {'right_answer': right_answer, 'stud_answer': right_answer, 'if_right': check}
 

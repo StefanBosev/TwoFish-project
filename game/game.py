@@ -14,7 +14,14 @@ class GameScreen(Screen):
     game = Game()
     #new label setup
     def new_label(self, title):
-        self.ids.label1.text = title
+        self.ids.label1.text = title\
+
+    def btn_update(self, source):
+        self.ids.btn1.source = source[0]
+        self.ids.btn2.source = source[1]
+        self.ids.btn3.source = source[2]
+        self.ids.btn4.source = source[3]
+
 
     def build(self):
         return game().run()
