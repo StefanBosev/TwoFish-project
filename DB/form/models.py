@@ -1,8 +1,10 @@
 from django.db import models
 import random
 
-#class for the picture
 class Picture(models.Model):
+    """
+    class for the picture
+    """
     word = models.CharField(max_length = 200)
     url = models.CharField(max_length = 500)
 
@@ -10,8 +12,10 @@ class Picture(models.Model):
     def get_four_random(cls):
         return Picture.objects.all().order_by('?')[:4]
 
-#class for the question
 class Question(models.Model):
+    """
+    class for the question
+    """
     answer = models.ForeignKey(Picture, on_delete = None, blank = True, null = True)
     pics = models.ManyToManyField(Picture, blank = True, related_name = 'q_pics')
 
@@ -20,15 +24,15 @@ class Question(models.Model):
         self.answer = lst.pop(0)
         self.save()
         self.pics.set(lst)
+        self.save()
 
 
-#class for the Answer
 class Answer(models.Model):
-    question = models.ForeignKey(Picture, on_delete = None, blank = True, null = True, related_name = 'question_id')
+    """
+    class for the answer
+    """
+    question = models.ForeignKey(Question, on_delete = None, blank = True, null = True, related_name = 'question_id')
     answer = models.ForeignKey(Picture, on_delete = None, blank = True, null = True, related_name = 'answer_id')
 
-    # def check(self):
-    #     if self.right_answer == self.stud_answer:
-    #         self.if_right = 1
-    #     else:
-    #         self.if_right = 0
+    def is_correct(self):
+        return self.question.answer == self.answer

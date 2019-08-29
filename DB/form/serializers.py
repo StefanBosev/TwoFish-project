@@ -2,8 +2,7 @@ from form.models import Question, Picture, Answer
 from rest_framework import serializers
 
 class PictureSerializer(serializers.HyperlinkedModelSerializer):
-    # word = serializers.CharField(max_length = 200)
-    # url = serializers.CharField(max_length = 500)
+
     class Meta:
         model = Picture
         fields = ['pk',
@@ -21,9 +20,7 @@ class QuestionSerializer(serializers.HyperlinkedModelSerializer):
                   'pics'
                   ]
 
-class AnswerSerializer(serializers.HyperlinkedModelSerializer):
-    question = PictureSerializer()
-    answer = PictureSerializer()
+class AnswerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Answer
